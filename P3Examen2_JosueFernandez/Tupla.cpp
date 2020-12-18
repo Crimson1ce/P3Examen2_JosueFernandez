@@ -7,6 +7,12 @@
 
 using std::to_string;
 
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
 Tupla::Tupla() {
 }
 

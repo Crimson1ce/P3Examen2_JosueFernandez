@@ -16,16 +16,17 @@ using std::vector;
 
 class Relacion {
 public:
-    /* Constructor por defecto */
-    Relacion();
-    
     /* Constructor, recibe el nombre de la relacion */
     Relacion(string nombre);
     
     /* Destructor */
     virtual ~Relacion();
     
+    /* Setter del nombre */
     void setNombre(string nombre);
+    
+    /* Getter del nombre */
+    string getNombre();
     
     /* Guarda la relacion en un archivo con su respectivo nombre e información. 
      */
@@ -33,7 +34,7 @@ public:
     
     /* Carga la relacion de un archivo con su nombre
      */
-    bool cargarRelacion(string nombre);
+    bool cargarRelacion();
     
     /* Libera todas las tuplas */
     void liberarTuplas();

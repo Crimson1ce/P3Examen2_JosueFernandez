@@ -18,13 +18,10 @@ using std::ios;
 #include <string>
 using std::string;
 
-using std::stoi;
+#include <vector>
+using std::vector;
 
-Relacion::Relacion() {
-    this->nombre = "";
-    this->numTuplas = 0;
-    this->numCampos = 0;
-}
+using std::stoi;
 
 Relacion::Relacion(string nombre) {
     this->nombre = nombre;
@@ -71,7 +68,7 @@ bool Relacion::guardarRelacion() {
     }
 }
 
-bool Relacion::cargarRelacion(string nombre) {
+bool Relacion::cargarRelacion() {
     if (this->nombre == "") {
         return false;
     }
@@ -148,4 +145,8 @@ void Relacion::liberarTuplas() {
     }
     tuplas.clear();
     numTuplas = 0;
+}
+
+string Relacion::getNombre() {
+    return this->nombre;
 }
