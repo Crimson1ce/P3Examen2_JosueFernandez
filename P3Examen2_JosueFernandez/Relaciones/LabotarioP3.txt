@@ -1,5 +1,0 @@
-3
-1
-Estudiante,Edad,Belleza,
-1886
-Josue,18,Total,

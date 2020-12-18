@@ -1,3 +1,4 @@
 Familia
 Doctor-Paciente
-LabotarioP3
+Laboratorio
+Maestros

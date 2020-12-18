@@ -1,0 +1,9 @@
+2
+3
+Nombre,Calidad,
+8839
+Bocky,100,
+8358
+Manrique,110,
+1578
+Indio_De_YT,9000,

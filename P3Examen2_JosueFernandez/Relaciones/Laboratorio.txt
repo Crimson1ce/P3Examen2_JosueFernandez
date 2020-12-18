@@ -1,0 +1,17 @@
+2
+7
+Estudiante,Nota,
+2959
+Josue,100,
+1823
+Carlos,100,
+9049
+Tyler,100,
+4628
+Hector,100,
+6358
+Jose,100,
+7651
+Felipe,100,
+3448
+Daniel,100,
