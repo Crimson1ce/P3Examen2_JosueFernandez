@@ -1,0 +1,9 @@
+3
+3
+Nombre,Relacion,Edad,
+6431
+Carlos,Hermano,23,
+7496
+Krista,Mama,jaja,
+5520
+Josue,Yomero,18,

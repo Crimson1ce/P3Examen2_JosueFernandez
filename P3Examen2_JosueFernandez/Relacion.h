@@ -19,6 +19,9 @@ public:
     /* Constructor, recibe el nombre de la relacion */
     Relacion(string nombre);
     
+    /* Constructor, recibe el nombre de la relacion y los encabezados*/
+    Relacion(string nombre, string campos);
+    
     /* Destructor */
     virtual ~Relacion();
     
@@ -27,6 +30,18 @@ public:
     
     /* Getter del nombre */
     string getNombre();
+    
+    /* Getter del numero de campos */
+    int getNumCampos();
+    
+    /* Getter del numero de tuplas */
+    int getNumTuplas();
+    
+    /* Getter de las tuplas */
+    vector<Tupla*> getTuplas();
+    
+    /* Getter de los encabezados */
+    vector<string> getEncabezados();
     
     /* Guarda la relacion en un archivo con su respectivo nombre e información. 
      */
@@ -38,6 +53,12 @@ public:
     
     /* Libera todas las tuplas */
     void liberarTuplas();
+    
+    /* Metodo que recibe una tupla y la valida para agregarla a la relación. */
+    bool insertarTupla(Tupla* tupla);
+    
+    /* Imprime la relacion en forma de tabla */
+    void imprimmirRelacion();
     
 private:
     string nombre;

@@ -5,6 +5,9 @@
 
 #include "Relacion.h"
 
+#include <iomanip>
+using std::setw;
+
 #include <sstream>
 using std::istringstream;
 
@@ -21,12 +24,32 @@ using std::string;
 #include <vector>
 using std::vector;
 
+#include <iostream>
+using std::cout;
+using std::endl;
+
 using std::stoi;
 
 Relacion::Relacion(string nombre) {
     this->nombre = nombre;
     this->numTuplas = 0;
     this->numCampos = 0;
+}
+
+Relacion::Relacion(string nombre, string campos) {
+    this->nombre = nombre;
+    this->numTuplas = 0;
+    this->numCampos = 0;
+
+    int i=0;
+    string token;
+    istringstream stream(campos);
+    while (getline(stream, token, ',')) {
+        if (token == "") continue;
+        encabezados.push_back(token);
+        this->numCampos++;
+//        cout << i++ << "\n";
+    }
 }
 
 Relacion::~Relacion() {
@@ -60,10 +83,10 @@ bool Relacion::guardarRelacion() {
             archivo << ((Tupla*) tuplas.at(i))->toString() << '\n';
         }
 
-        archivo.close;
+        archivo.close();
         return true;
     } else {
-        archivo.close;
+        archivo.close();
         return false;
     }
 }
@@ -103,14 +126,12 @@ bool Relacion::cargarRelacion() {
         }
 
         for (int i = 0; i < filas; i++) {
-            
-            Tupla* tuple = new Tupla();
-            
+
             string linea;
             archivo >> linea;
-            
-            tuple->ID = stoi(linea);
-            
+
+            Tupla* tuple = new Tupla(stoi(linea));
+
             archivo >> linea;
             istringstream ss(linea);
 
@@ -121,9 +142,9 @@ bool Relacion::cargarRelacion() {
                 tuple->valores.push_back(token);
             }
             tuple->numValores = columnas;
-            
+
             tuplas.push_back(tuple);
-            
+
         }
         this->numTuplas = filas;
 
@@ -149,4 +170,47 @@ void Relacion::liberarTuplas() {
 
 string Relacion::getNombre() {
     return this->nombre;
+}
+
+bool Relacion::insertarTupla(Tupla* tupla) {
+    if (tupla == NULL) {
+        return false;
+    }
+    this->tuplas.push_back(tupla);
+    this->numTuplas++;
+    return true;
+}
+
+void Relacion::imprimmirRelacion() {
+    cout << setw(13) << "ID_Number";
+    for (int i = 0; i < numCampos; i++) {
+        cout << setw(15) << this->encabezados.at(i);
+    }
+    cout << endl << endl;
+    
+    
+    for (int i = 0; i < tuplas.size(); i++) {
+        cout << setw(13) << ((Tupla*) tuplas.at(i))->ID;
+        for (int j = 0; j < ((Tupla*)tuplas.at(0))->valores.size(); j++) {
+            cout << setw(15) << ((Tupla*) tuplas.at(i))->valores.at(j);
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+int Relacion::getNumCampos() {
+    return this->numCampos;
+}
+
+int Relacion::getNumTuplas() {
+    return this->numTuplas;
+}
+
+vector<Tupla*> Relacion::getTuplas() {
+    return this->tuplas;
+}
+
+vector<string> Relacion::getEncabezados() {
+    return this->encabezados;
 }

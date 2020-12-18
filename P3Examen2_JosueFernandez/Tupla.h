@@ -16,10 +16,27 @@ class Relacion;
 
 class Tupla {
 public:
-    Tupla();
+    Tupla(int ID);
     virtual ~Tupla();
     
+    /* Devuelve los elementos separados por comas */
     string toString();
+    
+    /* Retorna el ID */
+    int getID();
+    
+    /* Retorna los valores */
+    vector<string> getValores();
+    
+    /* Retorna el numero de valores */
+    int getNumValores();
+    
+    /* Setter del numero de valores */
+    void setNumValores(int numero);
+    
+    void agregarValor(string valor);
+    
+    string getValor(int i);
     
 private:
     
